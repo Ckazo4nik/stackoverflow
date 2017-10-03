@@ -3,17 +3,15 @@ require 'rails_helper'
 feature 'autentificate user ', %q{
     I as user have login to app
 } do
+
+  given(:user) { create(:user) }
   scenario 'Registered user try sign in' do
-    User.create(email: "user@test.com", password: "12345678")
-    visit new_user_session_path
-    fill_in 'Email', with: 'user@test.com'
-    fill_in 'Password', with: '12345678'
-    click_on 'Log in'
+    sign_in(user)
     expect(page).to have_content ""
   end
   scenario 'no-registered login to app' do
     visit new_user_session_path
-    fill_in 'Email', with: 'user@test.com'
+    fill_in 'Email', with: 'wrong@test.com'
     fill_in 'Password', with: '12345678'
     click_on 'Log in'
 
