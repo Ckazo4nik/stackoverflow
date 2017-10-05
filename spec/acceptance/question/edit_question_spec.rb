@@ -33,7 +33,6 @@ feature 'autentificate user can edit question', %q{
     fill_in 'Title', with: ''
     fill_in 'Body', with: 'Tester'
     click_on 'Update'
-    save_and_open_page
 
     expect(page).to have_content '1 error prohibited this question from being saved'
   end
