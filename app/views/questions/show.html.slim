@@ -1,0 +1,12 @@
+h1 show question
+strong = @question.title
+br
+strong = @question.body
+
+br
+- @question.answers.each do |answer|
+  p Коментар
+  = answer.body
+  br
+
+= link_to 'add answer', new_question_answer_path(@question)
