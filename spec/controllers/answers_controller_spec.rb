@@ -8,6 +8,9 @@ RSpec.describe AnswersController, type: :controller do
     before do
       get :index
     end
+    before do
+      sign_in(user)
+    end
     let(:answers) { create_list(:answer, 2) }
     it 'Вивід елементів' do
       expect(assigns(:answers)).to match_array(answers)
@@ -26,6 +29,7 @@ RSpec.describe AnswersController, type: :controller do
       sign_in(user)
     end
     context 'З валідними даними' do
+
       it 'Створення відповіді з валідними данними'  do
         expect { post :create, params: { answer: attributes_for(:answer) } }.to change(Answer, :count).by(1)
       end
@@ -36,6 +40,31 @@ RSpec.describe AnswersController, type: :controller do
     end
   end
   describe 'PUTCH #update' do
+    sign_in_user
+    context "valid attributes" do
+      it "assigns the request question to @question" do
+        patch :update, params: { id: answer.id, question: attributes_for(:answer) }
+      end
+      it "changes question attributes" do
+        patch :update, params: { id: answer.id , answer: { body: "newq"} }
+        answer.reload
+        expect(answer.body).to eq "newq"
+      end
+      it "redirect to the update question" do
+        patch :update, params: { id: answer.id, answer: attributes_for(:answer) }
+        expect(response).to redirect_to answer
+      end
+    end
+    context "invelid attributes" do
+      before { patch :update, params: { id: answer.id , answer: {body: nil } }  }
+      it "not update" do
+        answer.reload
+        expect(answer.body).to eq "MyText"
+      end
+      it "re-render edit" do
+        expect(response).to render_template :edit
+      end
+    end
 
   end
   describe 'DELET #destroy' do

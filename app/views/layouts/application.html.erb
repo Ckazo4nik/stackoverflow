@@ -14,6 +14,8 @@
   <%= link_to 'log in', new_user_session_path%>
   <%= link_to 'sign in', user_session_path%>
   <%= link_to 'sign out', destroy_user_session_path, method: :delete%>
+  <%= current_user.email %>
+  <%= current_user.id %>
   <%= yield %>
   </body>
 </html>

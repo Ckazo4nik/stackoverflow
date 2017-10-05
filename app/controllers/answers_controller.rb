@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :answer_params, only: [ :show, :edit ]
+  before_action :answer_params, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_user!
   before_action :set_question, only: [:new, :create]
   def index
@@ -19,7 +19,7 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = @question.answers.build(set_params)
+    @answer = @question.answers.create(set_params.merge(user_id: current_user.id))
     if @answer.save
       redirect_to  @question, notice: "Ваша відповідь була створена"
     else
@@ -43,6 +43,6 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
   def set_params
-    params.require(:answer).permit(:body, :question_id)
+    params.require(:answer).permit(:body, :question_id, :user_id)
   end
 end
