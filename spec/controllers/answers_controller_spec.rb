@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
-
+  let(:question) { create(:question)}
   let(:answer) { create(:answer)}
   let(:user) { create(:user) }
   describe 'GET #index' do
@@ -11,7 +11,7 @@ RSpec.describe AnswersController, type: :controller do
     before do
       sign_in(user)
     end
-    let(:answers) { create_list(:answer, 2) }
+    let(:answers) { create_list(:answer, 4) }
     it 'Вивід елементів' do
       expect(assigns(:answers)).to match_array(answers)
     end
@@ -42,15 +42,15 @@ RSpec.describe AnswersController, type: :controller do
   describe 'PUTCH #update' do
     sign_in_user
     context "valid attributes" do
-      it "assigns the request question to @question" do
-        patch :update, params: { id: answer.id, question: attributes_for(:answer) }
+      it "assigns the request answer to @answer" do
+        patch :update, params: { id: answer.id, answer: attributes_for(:answer) }
       end
-      it "changes question attributes" do
+      it "changes answer attributes" do
         patch :update, params: { id: answer.id , answer: { body: "newq"} }
         answer.reload
         expect(answer.body).to eq "newq"
       end
-      it "redirect to the update question" do
+      it "redirect to the update answer" do
         patch :update, params: { id: answer.id, answer: attributes_for(:answer) }
         expect(response).to redirect_to answer
       end

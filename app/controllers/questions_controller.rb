@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.create(set_params)
+    @question = current_user.questions.create(set_params)
     if @question.save
       redirect_to @question , notice: 'Question was created.'
     else
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to question_path
+    redirect_to questions_path
 
   end
   private
@@ -43,6 +43,6 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   def set_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :user_id)
   end
 end

@@ -103,7 +103,7 @@ RSpec.describe QuestionsController, type: :controller do
     end
     it "redirect to index view" do
       delete :destroy, params: { id: question.id }
-      expect(response).to redirect_to question_path
+      expect(response).to redirect_to questions_path
     end
   end
 

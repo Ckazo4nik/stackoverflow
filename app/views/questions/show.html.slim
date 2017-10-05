@@ -7,6 +7,9 @@ br
 - @question.answers.each do |answer|
   p Коментар
   = answer.body
-  br
+  = answer.user.email
+  = link_to 'delete ',answer_path(answer), method: :delete
+
+br
 
 = link_to 'add answer', new_question_answer_path(@question)

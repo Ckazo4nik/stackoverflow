@@ -32,7 +32,8 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-
+    @answer.destroy
+    redirect_back fallback_location: @question
   end
 
   private
