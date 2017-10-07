@@ -22,7 +22,7 @@ feature 'autentificate user can edit question', %q{
     question = create(:question)
     visit root_path
     click_on 'Edit question'
-    expect(page).to have_content 'You need to sign in or sign up before continuing. Log in Email Password Remember me Sign up Forgot your password?'
+    expect(page).to have_content 'You need to sign in or sign up before continuing. log in sign in sign out Log in Email Password Remember me Sign up Forgot your password?'
   end
 
   scenario 'miss atributs' do

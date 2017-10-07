@@ -2,13 +2,15 @@ h1 show question
 strong = @question.title
 br
 strong = @question.body
+.answers
+  - @question.answers.each do |answer|
+    p= answer.body
 
 br
-- @question.answers.each do |answer|
-  p Коментар
-  = answer.body
-  = answer.user.email
-  = link_to 'delete ',answer_path(answer), method: :delete
+= form_for [@question, @answer] do |f|
+  = f.label :body, 'You answer'
+  = f.text_area :body
+  = f.submit 'Create'
 
 br
 

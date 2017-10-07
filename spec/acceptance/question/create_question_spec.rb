@@ -17,6 +17,6 @@ feature 'Create question', %q{
     visit questions_path
     click_on "Ask question"
 
-    expect(page).to have_content "You need to sign in or sign up before continuing. Log in Email Password Remember me Sign up Forgot your password?"
+    expect(page).to have_content "You need to sign in or sign up before continuing. log in sign in sign out Log in Email Password Remember me Sign up Forgot your password?"
   end
 end
