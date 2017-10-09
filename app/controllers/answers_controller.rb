@@ -5,6 +5,14 @@ class AnswersController < ApplicationController
     @question.answers.create(set_params.merge(user_id: current_user.id))
     redirect_to  question_path(@question)
   end
+
+  def update
+    @answer = Answer.find(params[:id])
+    @answer.update(set_params.merge(user_id: current_user.id))
+    @question = @answer.question
+    redirect_to  question_path(@question)
+
+  end
   private
 
   def set_params

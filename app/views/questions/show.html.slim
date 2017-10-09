@@ -3,14 +3,13 @@ strong = @question.title
 br
 strong = @question.body
 .answers
-  - @question.answers.each do |answer|
-    p= answer.body
-
+  = render 'answer'
 br
 = form_for [@question, @answer] do |f|
   = f.label :body, 'You answer'
   = f.text_area :body
   = f.submit 'Create'
+
 
 br
 
