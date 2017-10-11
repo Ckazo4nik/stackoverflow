@@ -15,7 +15,9 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
   describe "GET #show" do
+    before {    sign_in_user }
     before {  get :show, params: { id: question.id } }
+
     it "show questions" do
       expect(assigns(:question)).to eq question
     end

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :question_params, only: [ :show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [ :show, :index ]
+  before_action :authenticate_user!, except: [ :index ]
   def index
    @questions = Question.all
   end
