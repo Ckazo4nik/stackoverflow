@@ -15,6 +15,11 @@ br
   = f.label :body, 'You answer'
   = f.text_area :body
   = f.submit 'Create'
+  p
+    = f.fields_for :attachments do |a|
+      = a.label :file
+      = a.file_field :file
+    p = f.submit 'Save'
 
 
 br
