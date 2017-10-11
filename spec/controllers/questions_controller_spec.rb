@@ -15,7 +15,7 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
   describe "GET #show" do
-    before {    sign_in_user }
+    sign_in_user
     before {  get :show, params: { id: question.id } }
 
     it "show questions" do
@@ -30,6 +30,9 @@ RSpec.describe QuestionsController, type: :controller do
     before { get :new }
     it 'new Question to question' do
       expect(assigns(:question)).to be_a_new(Question)
+    end
+    it 'build new attachments for question' do
+      expect(assigns(:question).attachments.first).to be_a_new(Attachment)
     end
     it "render #new" do
       expect(response).to render_template :new

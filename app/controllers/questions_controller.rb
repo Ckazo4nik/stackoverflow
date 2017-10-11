@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question.attachments.build
   end
 
   def edit
@@ -44,6 +45,6 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   def set_params
-    params.require(:question).permit(:title, :body, :user_id)
+    params.require(:question).permit(:title, :body, :user_id, attachments_attributes: [:file])
   end
 end
