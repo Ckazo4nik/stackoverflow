@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -69,3 +70,4 @@ gem 'jquery-rails'
 gem 'remotipart', github: 'pedantix/remotipart', ref: '7f7989db572976816c03508c335bbc1d8230af78'
 gem "private_pub"
 gem "thin"
+gem 'rails_12factor'
