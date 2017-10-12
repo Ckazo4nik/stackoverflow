@@ -4,7 +4,7 @@
   = f.text_field :title
   = f.label :body
   = f.text_area :body
-  = f.submit  action: @question.new_record? ? 'Create' : 'Update'
+  .submit-create-question= f.submit  action: @question.new_record? ? 'Create' : 'Update'
   p Attachments:
   p
     = f.fields_for :attachments do |a|

@@ -1,4 +1,10 @@
-p= link_to 'Ask question', new_question_path
+.link_new
+  p= link_to 'Ask question', new_question_path
+
+.questions
+  = render @questions
 
 
-= render @questions
+.new_question_create
+  = render 'form'
+= subscribe_to "/questions"

@@ -1,8 +1,10 @@
 class QuestionsController < ApplicationController
-  before_action :question_params, only: [ :show, :edit, :update, :destroy]
+  before_action :question_params, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [ :index ]
   def index
    @questions = Question.all
+   @question = Question.new
+   @question.attachments.build
   end
 
   def show
@@ -19,11 +21,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @questions = Question.all
     @question = current_user.questions.create(set_params)
-    if @question.save
-      redirect_to @question , notice: 'Question was created.'
-    else
-      render :new
+    respond_to do |f|
+      if @question.save
+        f.html { redirect_to questions_path }
+        f.js
+      end
     end
   end
 

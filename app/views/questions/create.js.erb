@@ -1,0 +1,4 @@
+<% publish_to "/questions" do %>
+  $('.questions').html('<%= j  render @questions  %>' );
+  $('.new_question #question_body,.new_question #question_title').val('');
+<% end %>
