@@ -11,7 +11,7 @@ ul
 .answers
   = render 'answer'
 br
-= form_for [@question, @answer] do |f|
+= form_for [@question, @answer], remote: true do |f|
   = f.label :body, 'You answer'
   = f.text_area :body
   = f.submit 'Create'
@@ -25,3 +25,4 @@ br
 br
 
 = link_to 'add answer', new_question_answer_path(@question)
+= subscribe_to "/questions/#{@question.id}/answers"

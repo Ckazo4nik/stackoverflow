@@ -10,4 +10,5 @@
       = form_for [@question, answer], remote: true, html: {id: "edit-answer-#{answer.id}"} do |f|
           = f.label :body, 'Answer'
           = f.text_area :body
+          = f.submit 'Save'
 

@@ -67,3 +67,5 @@ gem "dynamic_form"
 gem 'carrierwave'
 gem 'jquery-rails'
 gem 'remotipart', github: 'pedantix/remotipart', ref: '7f7989db572976816c03508c335bbc1d8230af78'
+gem "private_pub"
+gem "thin"
