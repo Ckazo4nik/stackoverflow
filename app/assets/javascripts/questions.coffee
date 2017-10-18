@@ -1,4 +1,6 @@
 $ ->
+
+
   $('.link_new').click (e) ->
     e.preventDefault();
     $('.new_question_create').show();

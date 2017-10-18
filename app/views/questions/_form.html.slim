@@ -7,6 +7,6 @@
   .submit-create-question= f.submit  action: @question.new_record? ? 'Create' : 'Update'
   p Attachments:
   p
-    = f.fields_for :attachments do |a|
+    = f.fields_for :attachments,@question.attachments.build do |a|
       = a.label :file
       = a.file_field :file

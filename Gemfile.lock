@@ -295,6 +295,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   remotipart!
+  responders
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)

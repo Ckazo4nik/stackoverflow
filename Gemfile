@@ -71,3 +71,4 @@ gem 'remotipart', github: 'pedantix/remotipart', ref: '7f7989db572976816c03508c3
 gem "private_pub"
 gem "thin"
 gem 'rails_12factor'
+gem "responders"

@@ -1,14 +1,17 @@
-h1 show question
-strong = @question.title
-br
-strong = @question.body
-p Attachment:
-ul
-  - @question.attachments.each do |f|
+.question
+  h1 show question
+  strong = @question.title
+  br
+  strong = @question.body
+  p Attachment:
+  ul
+    - @question.attachments.each do |f|
+      li= link_to f.file.file.filename, f.file.url
+  .comments
+    = render 'comments/list', parent: @question
 
-    li= link_to f.file.file.filename, f.file.url
-    li= f.file.url
-.answers
+
+.answers data={question_id: "#{@question.id}"}
   = render 'answer'
 br
 = form_for [@question, @answer], remote: true do |f|
@@ -16,7 +19,7 @@ br
   = f.text_area :body
   = f.submit 'Create'
   p
-    = f.fields_for :attachments do |a|
+    = f.fields_for :attachments, @answer.attachments.build  do |a|
       = a.label :file
       = a.file_field :file
     p = f.submit 'Save'

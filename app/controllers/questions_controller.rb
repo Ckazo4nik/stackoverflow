@@ -1,20 +1,19 @@
 class QuestionsController < ApplicationController
   before_action :question_params, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [ :index ]
+  before_action :build_answer, only: :show
+  respond_to :js
   def index
-   @questions = Question.all
    @question = Question.new
-   @question.attachments.build
+   respond_with(@questions = Question.all)
   end
 
   def show
-    @answer = @question.answers.build
-    @answer.attachments.build
+  respond_with @question
   end
 
   def new
-    @question = Question.new
-    @question.attachments.build
+  respond_with(@question = Question.new)
   end
 
   def edit
@@ -22,30 +21,22 @@ class QuestionsController < ApplicationController
 
   def create
     @questions = Question.all
-    @question = current_user.questions.create(set_params)
-    respond_to do |f|
-      if @question.save
-        f.html { redirect_to questions_path }
-        f.js
-      end
-    end
+    respond_with(@question = current_user.questions.create(set_params))
   end
-
   def update
     @question.update(set_params)
-    if @question.save
-      redirect_to @question
-    else
-      render :edit
-    end
+    respond_with @question
   end
 
   def destroy
-    @question.destroy
-    redirect_to questions_path
-
+    respond_with(@question.destroy)
   end
+
   private
+
+  def build_answer
+    @answer = @question.answers.build
+    end
   def question_params
     @question = Question.find(params[:id])
   end
