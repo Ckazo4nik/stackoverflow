@@ -72,3 +72,5 @@ gem "private_pub"
 gem "thin"
 gem 'rails_12factor'
 gem "responders"
+gem 'omniauth'
+gem 'omniauth-facebook'
