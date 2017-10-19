@@ -9,16 +9,23 @@
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= link_to 'log in', new_user_session_path%>
-  <%= link_to 'sign in', user_session_path%>
-  <%= link_to 'sign out', destroy_user_session_path, method: :delete%>
-  <% if current_user.admin? %>
-      <h1>User Admin</h1>
-  <% else %>
-      <h1>User</h1>
-  <% end %>
-  <%= yield %>
+   <div class="container">
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+     <% if user_signed_in? %>
+         <%= link_to 'sign out', destroy_user_session_path, method: :delete%>
+         <% if current_user.admin? %>
+             <h1>User Admin</h1>
+         <% else %>
+             <h1>User</h1>
+         <% end %>
+     <% else %>
+         <%= link_to 'log in', new_user_session_path%>
+         <%= link_to 'sign in', new_user_registration_path %>
+     <% end %>
+     <%= render 'shared/head' %>
+
+     <%= yield %>
+   </div>
   </body>
 </html>

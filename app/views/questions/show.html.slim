@@ -3,10 +3,13 @@
   strong = @question.title
   br
   strong = @question.body
-  p Attachment:
-  ul
-    - @question.attachments.each do |f|
-      li= link_to f.file.file.filename, f.file.url
+  br
+  strong = @question.user.email
+  - if @question.attachments.present?
+    p Attachment:
+      ul
+        - @question.attachments.each do |f|
+          li= link_to f.file.file.filename, f.file.url
   .comments
     = render 'comments/list', parent: @question
 

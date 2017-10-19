@@ -24,5 +24,7 @@ describe Ability do
 
     it { should be_able_to :update, create( :question, user: user), user: user}
     it { should_not be_able_to :update, create( :question, user: othe), user: user}
+    it { should be_able_to :destroy, create( :question, user: user), user: user}
+    it { should_not be_able_to :destroy, create( :question, user: othe), user: user}
   end
 end

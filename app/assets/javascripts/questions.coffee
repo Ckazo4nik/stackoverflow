@@ -7,3 +7,5 @@ $ ->
     $('.submit-create-question').click (e) ->
       $('.new_question_create').hide();
 
+
+
