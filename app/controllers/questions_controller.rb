@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :question_params, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [ :index ]
   before_action :build_answer, only: :show
+  authorize_resource
   respond_to :js
   def index
    @question = Question.new

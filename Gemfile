@@ -74,3 +74,4 @@ gem 'rails_12factor'
 gem "responders"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'cancancan'

@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_answer, only: :update
   respond_to :js, only: :create
+  authorize_resource
   def create
     @question = Question.find(params[:question_id])
     respond_with(@answer = @question.answers.create(set_params.merge(user_id: current_user.id)))

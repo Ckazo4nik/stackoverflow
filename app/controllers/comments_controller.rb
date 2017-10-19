@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_parent, only: :create
   respond_to :js
+  authorize_resource
+
 
   def create
     respond_with(@comment = @parent.comments.create(comment_params))
