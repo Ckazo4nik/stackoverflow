@@ -53,6 +53,7 @@ group :development do
 end
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'json-spec'
 end
 group :test, :development do
   gem 'rspec-rails'
@@ -80,3 +81,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'bootstrap-sass'
 gem 'sprockets-rails'
 gem 'popper_js', '~> 1.11.1'
+gem 'doorkeeper'
+gem 'active_model_serializers'
+gem 'oj'
+gem 'oj_mimic_json'
