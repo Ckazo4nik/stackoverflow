@@ -18,3 +18,4 @@
 .public
 .byebug_history
 .idea
+db/sphinx

@@ -57,10 +57,6 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap (4.0.0.beta)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (~> 1.11.1)
-      sass (>= 3.4.19)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -140,9 +136,12 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)
+    innertube (1.1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    joiner (0.3.4)
+      activerecord (>= 4.1.0)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -164,6 +163,7 @@ GEM
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.9.0)
+    middleware (0.1.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -173,6 +173,7 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mysql2 (0.4.9)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -248,6 +249,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    riddle (2.2.0)
     rspec-core (3.7.0)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -303,6 +305,13 @@ GEM
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
       rack (>= 1, < 3)
+    thinking-sphinx (3.4.2)
+      activerecord (>= 3.1.0)
+      builder (>= 2.1.2)
+      innertube (>= 1.0.2)
+      joiner (>= 0.2.0)
+      middleware (>= 0.1.0)
+      riddle (>= 2.0.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -333,7 +342,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  bootstrap (~> 4.0.0.beta)
   bootstrap-sass
   byebug
   cancancan
@@ -351,6 +359,7 @@ DEPENDENCIES
   json-spec
   launchy
   listen (>= 3.0.5, < 3.2)
+  mysql2
   oj
   oj_mimic_json
   omniauth
@@ -373,6 +382,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sprockets-rails
   thin
+  thinking-sphinx
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
